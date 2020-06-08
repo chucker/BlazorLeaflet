@@ -6,6 +6,7 @@ window.leafletBlazor = {
         var leafletMap = L.map(map.id, {
             center: map.center,
             zoom: map.zoom,
+            zoomControl: map.zoomControl,
             minZoom: map.minZoom ? map.minZoom : undefined,
             maxZoom: map.maxZoom ? map.maxZoom : undefined,
             maxBounds: map.maxBounds && map.maxBounds.item1 && map.maxBounds.item2 ? L.latLngBounds(map.maxBounds.item1, map.maxBounds.item2) : undefined,
@@ -20,7 +21,7 @@ window.leafletBlazor = {
             attribution: tileLayer.attribution,
             pane: tileLayer.pane,
             // ---
-            size: tileLayer.size ? L.point(tileLayer.size.width, tileLayer.size.height) : undefined,
+            tileSize: tileLayer.tileSize ? L.point(tileLayer.tileSize.width, tileLayer.tileSize.height) : undefined,
             opacity: tileLayer.opacity,
             updateWhenZooming: tileLayer.updateWhenZooming,
             updateInterval: tileLayer.updateInterval,
