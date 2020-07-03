@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace BlazorLeaflet.Models
 {
     public class WmsLayer : TileLayer
@@ -43,6 +45,11 @@ namespace BlazorLeaflet.Models
         /// Whether to pass request query parameter keys in upper case.
         /// </summary>
         public bool UseUppercaseParameters { get; set; }
+
+        /// <summary>
+        /// Additional vendor-specific parameters to pass to the WMS server.
+        /// </summary>
+        public Dictionary<string, string> AdditionalWmsParameters { get; set; }
 
         /// <summary>
         /// Initializes a WMS tile layer pointing to a certain WMS server.

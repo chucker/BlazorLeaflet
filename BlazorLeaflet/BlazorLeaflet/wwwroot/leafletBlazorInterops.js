@@ -204,7 +204,7 @@ window.leafletBlazor = {
         addLayer(mapId, geoJsonLayer, geodata.id);
     },
     addWmsLayer: function (mapId, wms, objectReference) {
-        const layer = L.tileLayer.wms(wms.baseUrl, {
+        var options = {
             layers: wms.layers.join(','),
             styles: wms.styles.join(','),
             crs: createCrs(wms.crs),
@@ -213,7 +213,13 @@ window.leafletBlazor = {
             transparent: wms.isTransparent,
             version: wms.wmsVersion,
             uppercase: wms.useUppercase
-        });
+        };
+
+        if (wms.additionalWmsParameters)
+            options = { ...options, ...wms.additionalWmsParameters };
+
+        const layer = L.tileLayer.wms(wms.baseUrl, options);
+
         addLayer(mapId, layer, wms.id);
     },
     removeLayer: function (mapId, layerId) {
